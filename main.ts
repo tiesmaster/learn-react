@@ -1,1 +1,1 @@
-console.log("hoi");
+let n: never;
