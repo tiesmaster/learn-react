@@ -2,8 +2,8 @@
 
 ## TypeScript Handbook
 
-* [x] Basic Types
-* [x] Variable Declarations
+* [x] [Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+* [x] [Variable Declarations](https://www.typescriptlang.org/docs/handbook/variable-declarations.html)
 * [x] [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 * [ ] [Classes](https://www.typescriptlang.org/docs/handbook/classes.html)
 * [ ] Functions
