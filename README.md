@@ -6,9 +6,9 @@
 * [x] [Variable Declarations](https://www.typescriptlang.org/docs/handbook/variable-declarations.html)
 * [x] [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 * [ ] [Classes](https://www.typescriptlang.org/docs/handbook/classes.html)
-* [ ] Functions
-* [ ] Generics
-* [ ] Enums
+* [ ] [Functions](https://www.typescriptlang.org/docs/handbook/functions.html)
+* [ ] [Generics](https://www.typescriptlang.org/docs/handbook/generics.html)
+* [ ] [Enums](https://www.typescriptlang.org/docs/handbook/enums.html)
 * [ ] Type Inference
 * [ ] Type Compatibility
 * [ ] Advanced Types
