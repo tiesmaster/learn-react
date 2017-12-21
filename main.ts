@@ -1,15 +1,37 @@
-interface Shape {
-  color: string;
+class Animal {
+  name: string;
+  constructor(theName: string) {
+    this.name = theName;
+  }
+  move(distanceInMeters: number = 0) {
+    console.log(`${this.name} moved ${distanceInMeters}m.`);
+  }
 }
 
-interface Square extends Shape {
-  sideLength: number;
+class Snake extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  move(distanceInMeters = 5) {
+    console.log("Slithering...");
+    super.move(distanceInMeters);
+  }
 }
 
-let square = <Square>{};
-// let square2 = {} as Square;
+class Horse extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  move(distanceInMeters = 45) {
+    console.log("Galloping...");
+    super.move(distanceInMeters);
+  }
+}
 
-square.color = "blue";
-square.sideLength = 10;
+let sam = new Snake("Sammy the Python");
+let tom: Animal = new Horse("Tommy the Palomino");
 
-console.log(square);
+sam.move();
+tom.move(34);
+
+// @Public, private, and protected modifiers
