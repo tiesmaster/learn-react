@@ -34,4 +34,4 @@ let tom: Animal = new Horse("Tommy the Palomino");
 sam.move();
 tom.move(34);
 
-// @Public, private, and protected modifiers
+// @Readonly modifier
