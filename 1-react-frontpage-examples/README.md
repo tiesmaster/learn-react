@@ -4,7 +4,7 @@
 
  * [X] A Simple Component
  * [X] A Stateful Component
- * [ ] An Application
+ * [X] An Application
  * [ ] A Component Using External Plugins
 
 ## TypeScript
