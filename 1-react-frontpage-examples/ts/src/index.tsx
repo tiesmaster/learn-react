@@ -14,3 +14,32 @@ class HelloMessage extends React.Component<{ name: string }> {
 }
 
 ReactDOM.render(<HelloMessage name="Ties" />, mountNode);
+
+// 2. A Stateful Component
+
+class Timer extends React.Component<{}, { seconds: number }> {
+  // tslint:disable-next-line:no-any
+  interval: any;
+  constructor(props: {}) {
+    super(props);
+    this.state = { seconds: 0 };
+  }
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  tick() {
+    this.setState(prevState => ({ seconds: prevState.seconds + 1 }));
+  }
+  render() {
+    return (
+      <div>
+        Seconds: {this.state.seconds}
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Timer />, mountNode);

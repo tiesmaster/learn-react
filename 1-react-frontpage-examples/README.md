@@ -10,6 +10,6 @@
 ## TypeScript
 
 * [x] A Simple Component
-* [ ] A Stateful Component
+* [x] A Stateful Component
 * [ ] An Application
 * [ ] A Component Using External Plugins
