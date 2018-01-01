@@ -13,7 +13,7 @@ class HelloMessage extends React.Component<{ name: string }> {
   }
 }
 
-ReactDOM.render(<HelloMessage name="Ties" />, mountNode);
+// ReactDOM.render(<HelloMessage name="Ties" />, mountNode);
 
 // 2. A Stateful Component
 
