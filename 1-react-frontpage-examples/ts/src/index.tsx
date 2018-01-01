@@ -1,11 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root') as HTMLElement
-);
-registerServiceWorker();
+const mountNode = document.getElementById('root') as HTMLElement;
+
+// 1. A Simple Component
+
+class HelloMessage extends React.Component<{ name: string }> {
+  render() {
+    return (
+      <div>Hello {this.props.name}</div>
+    );
+  }
+}
+
+ReactDOM.render(<HelloMessage name="Ties" />, mountNode);

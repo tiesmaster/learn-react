@@ -9,7 +9,7 @@
 
 ## TypeScript
 
-* [ ] A Simple Component
+* [x] A Simple Component
 * [ ] A Stateful Component
 * [ ] An Application
 * [ ] A Component Using External Plugins
