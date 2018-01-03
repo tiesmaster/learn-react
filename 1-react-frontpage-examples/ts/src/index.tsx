@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { FormEvent, ChangeEvent } from 'react';
 
 const mountNode = document.getElementById('root') as HTMLElement;
 
@@ -42,4 +43,54 @@ class Timer extends React.Component<{}, { seconds: number }> {
   }
 }
 
-ReactDOM.render(<Timer />, mountNode);
+// ReactDOM.render(<Timer />, mountNode);
+
+// 3. An Application
+
+class TodoApp extends React.Component<{}, { currentInput: string, items: TodoItem[] }> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { currentInput: '', items: [] };
+    this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  // tslint:disable-next-line:no-any
+  handleTextChange(e: any) {
+    this.setState({ currentInput: e.target.value });
+  }
+  // tslint:disable-next-line:no-any
+  handleSubmit(e: any) {
+    e.preventDefault();
+    const newTodo = { id: Date.now().toString(), value: this.state.currentInput };
+    this.setState(prevState => ({ currentInput: '', items: prevState.items.concat(newTodo) }));
+  }
+  render() {
+    return (
+      <div>
+        <h3>TODO</h3>
+        <TodoList items={this.state.items} />
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleTextChange} value={this.state.currentInput} />
+          <button>Add #{this.state.items.length + 1}</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+interface TodoItem {
+  id: string;
+  value: string;
+}
+
+class TodoList extends React.Component<{ items: TodoItem[] }, {}> {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(todo => <li key={todo.id}>{todo.value}</li>)}
+      </ul>
+    );
+  }
+}
+
+ReactDOM.render(<TodoApp />, mountNode);

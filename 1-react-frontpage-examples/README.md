@@ -11,5 +11,5 @@
 
 * [x] A Simple Component
 * [x] A Stateful Component
-* [ ] An Application
+* [x] An Application
 * [ ] A Component Using External Plugins
