@@ -53,12 +53,11 @@ class TodoApp extends React.Component<{}, { currentInput: string, items: TodoIte
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // tslint:disable-next-line:no-any
-  handleTextChange(e: any) {
-    this.setState({ currentInput: e.target.value });
+  handleTextChange(e: React.FormEvent<HTMLInputElement>) {
+    this.setState({ currentInput: e.currentTarget.value });
   }
   // tslint:disable-next-line:no-any
-  handleSubmit(e: any) {
+  handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const newTodo = { id: Date.now().toString(), value: this.state.currentInput };
     this.setState(prevState => ({ currentInput: '', items: prevState.items.concat(newTodo) }));
