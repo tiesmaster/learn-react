@@ -1,10 +1,10 @@
 # [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
 
-* [ ] Before We Start
+* [X] Before We Start
     * [X] What We're Building
     * [X] Prerequisites
     * [X] How to Follow Along
-    * [ ] Help, I'm Stuck!
+    * [X] Help, I'm Stuck!
 * [ ] Overview
     * [ ] What is React?
     * [ ] Getting Started
