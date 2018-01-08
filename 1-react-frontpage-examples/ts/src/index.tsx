@@ -19,14 +19,13 @@ class HelloMessage extends React.Component<{ name: string }> {
 // 2. A Stateful Component
 
 class Timer extends React.Component<{}, { seconds: number }> {
-  // tslint:disable-next-line:no-any
-  interval: any;
+  interval: number;
   constructor(props: {}) {
     super(props);
     this.state = { seconds: 0 };
   }
   componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000);
+    this.interval = window.setInterval(() => this.tick(), 1000);
   }
   componentWillUnmount() {
     clearInterval(this.interval);
