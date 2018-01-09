@@ -6,7 +6,7 @@
     * [X] How to Follow Along
     * [X] Help, I'm Stuck!
 * [ ] Overview
-    * [ ] What is React?
+    * [X] What is React?
     * [ ] Getting Started
     * [ ] Passing Data Through Props
     * [ ] An Interactive Component
@@ -21,3 +21,5 @@
     * [ ] Keys
     * [ ] Implementing Time Travel
     * [ ] Wrapping Up
+
+Final Result: [Tic Tac Toe game](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)
