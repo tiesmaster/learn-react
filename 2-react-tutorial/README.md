@@ -9,7 +9,7 @@
     * [X] What is React?
     * [X] Getting Started
     * [X] Passing Data Through Props
-    * [ ] An Interactive Component
+    * [X] An Interactive Component
     * [ ] Developer Tools
 * [ ] Lifting State Up
     * [ ] Why Immutability Is Important
