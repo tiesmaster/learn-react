@@ -1,16 +1,16 @@
-# [React Tutorial](https://reactjs.org/tutorial/tutorial.html#an-interactive-component)
+# [React Tutorial](https://reactjs.org/tutorial/tutorial.html#lifting-state-up)
 
 * [X] Before We Start
     * [X] What We're Building
     * [X] Prerequisites
     * [X] How to Follow Along
     * [X] Help, I'm Stuck!
-* [ ] Overview
+* [X] Overview
     * [X] What is React?
     * [X] Getting Started
     * [X] Passing Data Through Props
     * [X] An Interactive Component
-    * [ ] Developer Tools
+    * [X] Developer Tools
 * [ ] Lifting State Up
     * [ ] Why Immutability Is Important
     * [ ] Functional Components
