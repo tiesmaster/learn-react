@@ -7,7 +7,7 @@
     * [X] Help, I'm Stuck!
 * [ ] Overview
     * [X] What is React?
-    * [ ] Getting Started
+    * [X] Getting Started
     * [ ] Passing Data Through Props
     * [ ] An Interactive Component
     * [ ] Developer Tools
