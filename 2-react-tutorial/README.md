@@ -1,4 +1,4 @@
-# [React Tutorial](https://reactjs.org/tutorial/tutorial.html#what-is-react)
+# [React Tutorial](https://reactjs.org/tutorial/tutorial.html#an-interactive-component)
 
 * [X] Before We Start
     * [X] What We're Building
@@ -8,7 +8,7 @@
 * [ ] Overview
     * [X] What is React?
     * [X] Getting Started
-    * [ ] Passing Data Through Props
+    * [X] Passing Data Through Props
     * [ ] An Interactive Component
     * [ ] Developer Tools
 * [ ] Lifting State Up
