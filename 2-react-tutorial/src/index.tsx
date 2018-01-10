@@ -3,23 +3,40 @@ import * as ReactDOM from 'react-dom';
 
 import './index.css';
 
-class Square extends React.Component<{ index: number }, { value: 'X' | null }> {
-  constructor(props: { index: number }) {
-    super(props);
-    this.state = { value: null };
-  }
+class Square extends React.Component<{
+  value: 'X' | 'O' | null,
+  handleClick: () => void
+}> {
   render() {
     return (
-      <button className="square" onClick={() => this.setState({ value: 'X' })}>
-        {this.state.value}
+      <button className="square" onClick={() => this.props.handleClick()}>
+        {this.props.value}
       </button>
     );
   }
 }
 
-class Board extends React.Component {
+class Board extends React.Component<{}, { squares: 'X' | 'O' | null[] }> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
   renderSquare(i: number) {
-    return <Square index={i} />;
+    return (
+      <Square
+        value={this.state.squares[i] as 'X' | 'O' | null}
+        handleClick={() => this.handleClickForIndex(i)}
+      />
+    );
+  }
+  handleClickForIndex(index: number) {
+    // tslint:disable-next-line:no-any
+    const squares: any = this.state.squares.slice();
+    squares[index] = 'X';
+    this.setState({ squares: squares });
+    //
   }
   render() {
     const status = 'Next player: X';
