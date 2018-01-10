@@ -3,8 +3,10 @@ import * as ReactDOM from 'react-dom';
 
 import './index.css';
 
+type SquareValue = 'X' | 'O' | null;
+
 class Square extends React.Component<{
-  value: 'X' | 'O' | null,
+  value: SquareValue,
   handleClick: () => void
 }> {
   render() {
@@ -16,7 +18,7 @@ class Square extends React.Component<{
   }
 }
 
-class Board extends React.Component<{}, { squares: 'X' | 'O' | null[] }> {
+class Board extends React.Component<{}, { squares: SquareValue[] }> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -26,14 +28,13 @@ class Board extends React.Component<{}, { squares: 'X' | 'O' | null[] }> {
   renderSquare(i: number) {
     return (
       <Square
-        value={this.state.squares[i] as 'X' | 'O' | null}
+        value={this.state.squares[i]}
         handleClick={() => this.handleClickForIndex(i)}
       />
     );
   }
   handleClickForIndex(index: number) {
-    // tslint:disable-next-line:no-any
-    const squares: any = this.state.squares.slice();
+    const squares = this.state.squares.slice();
     squares[index] = 'X';
     this.setState({ squares: squares });
     //
