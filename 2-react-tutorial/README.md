@@ -12,7 +12,7 @@
     * [X] An Interactive Component
     * [X] Developer Tools
 * [ ] Lifting State Up
-    * [ ] Why Immutability Is Important
+    * [X] Why Immutability Is Important
     * [ ] Functional Components
     * [ ] Taking Turns
     * [ ] Declaring a Winner
