@@ -5,17 +5,16 @@ import './index.css';
 
 type SquareValue = 'X' | 'O' | null;
 
-class Square extends React.Component<{
-  value: SquareValue,
-  handleClick: () => void
-}> {
-  render() {
-    return (
-      <button className="square" onClick={() => this.props.handleClick()}>
-        {this.props.value}
-      </button>
-    );
-  }
+interface SquareProps {
+  value: SquareValue;
+  handleClick: () => void;
+}
+
+function Square(props: SquareProps) {
+  return (
+    <button className="square" onClick={props.handleClick}>
+      {props.value}
+    </button>);
 }
 
 class Board extends React.Component<{}, { squares: SquareValue[] }> {

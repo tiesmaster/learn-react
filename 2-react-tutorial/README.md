@@ -13,7 +13,7 @@
     * [X] Developer Tools
 * [ ] Lifting State Up
     * [X] Why Immutability Is Important
-    * [ ] Functional Components
+    * [X] Functional Components
     * [ ] Taking Turns
     * [ ] Declaring a Winner
 * [ ] Storing A History
