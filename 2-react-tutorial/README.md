@@ -14,7 +14,7 @@
 * [ ] Lifting State Up
     * [X] Why Immutability Is Important
     * [X] Functional Components
-    * [ ] Taking Turns
+    * [X] Taking Turns
     * [ ] Declaring a Winner
 * [ ] Storing A History
     * [ ] Showing the Moves

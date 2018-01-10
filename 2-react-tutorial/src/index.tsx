@@ -17,11 +17,12 @@ function Square(props: SquareProps) {
     </button>);
 }
 
-class Board extends React.Component<{}, { squares: SquareValue[] }> {
+class Board extends React.Component<{}, { squares: SquareValue[], xIsNext: boolean }> {
   constructor(props: {}) {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
+      xIsNext: true
     };
   }
   renderSquare(i: number) {
@@ -34,12 +35,14 @@ class Board extends React.Component<{}, { squares: SquareValue[] }> {
   }
   handleClickForIndex(index: number) {
     const squares = this.state.squares.slice();
-    squares[index] = 'X';
-    this.setState({ squares: squares });
-    //
+    squares[index] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext
+    });
   }
   render() {
-    const status = 'Next player: X';
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
