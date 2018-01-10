@@ -11,11 +11,11 @@
     * [X] Passing Data Through Props
     * [X] An Interactive Component
     * [X] Developer Tools
-* [ ] Lifting State Up
+* [X] Lifting State Up
     * [X] Why Immutability Is Important
     * [X] Functional Components
     * [X] Taking Turns
-    * [ ] Declaring a Winner
+    * [X] Declaring a Winner
 * [ ] Storing A History
     * [ ] Showing the Moves
     * [ ] Keys
