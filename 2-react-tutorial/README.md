@@ -1,4 +1,4 @@
-# [React Tutorial](https://reactjs.org/tutorial/tutorial.html#lifting-state-up)
+# [React Tutorial](https://reactjs.org/tutorial/tutorial.html#storing-a-history)
 
 * [X] Before We Start
     * [X] What We're Building
