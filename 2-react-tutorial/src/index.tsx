@@ -146,8 +146,13 @@ class Game extends React.Component<{}, {
       const desc = move ?
         'Go to move #' + move + ' ' + this.calculateDisplayLocation(step.moveLocation as number) :
         'Go to game start';
+
+      let className = '';
+      if (move === this.state.stepNumber) {
+        className = 'currentStep';
+      }
       return (
-        <li key={move}>
+        <li key={move} className={className}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
