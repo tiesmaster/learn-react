@@ -73,14 +73,18 @@ class Board extends React.Component<BoardProps> {
     );
   }
   render() {
+    const renderRow = (rowIndex: number) => {
+      const cols = [];
+      for (let colIndex = 0; colIndex < 3; colIndex++) {
+        cols.push(this.renderSquare((3 * rowIndex) + colIndex));
+      }
+      return cols;
+    };
     const rows = [];
-    for (let colIndex = 0; colIndex < 3; colIndex++) {
-      const rowIndex = colIndex * 3;
+    for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
       rows.push((
         <BoardRow>
-          {this.renderSquare(rowIndex + 0)}
-          {this.renderSquare(rowIndex + 1)}
-          {this.renderSquare(rowIndex + 2)}
+          {renderRow(rowIndex)}
         </BoardRow>)
       );
     }
