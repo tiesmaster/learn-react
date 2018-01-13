@@ -1,4 +1,4 @@
-# [React Tutorial](https://reactjs.org/tutorial/tutorial.html#storing-a-history)
+# [React Tutorial](https://reactjs.org/tutorial/tutorial.html#wrapping-up)
 
 * [X] Before We Start
     * [X] What We're Building
@@ -16,10 +16,18 @@
     * [X] Functional Components
     * [X] Taking Turns
     * [X] Declaring a Winner
-* [ ] Storing A History
+* [X] Storing A History
     * [X] Showing the Moves
     * [X] Keys
     * [X] Implementing Time Travel
-    * [ ] Wrapping Up
+    * [X] Wrapping Up
 
 Final Result: [Tic Tac Toe game](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)
+
+## Still left TODO:
+
+ 4. Add a toggle button that lets you sort the moves in either ascending or descending order.
+ 5. When someone wins, highlight the three squares that caused the win.
+
+And also:
+ * Introduce Redux into this app
