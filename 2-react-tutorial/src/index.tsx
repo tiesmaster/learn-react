@@ -2,6 +2,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import './index.css';
+import styled from 'styled-components';
+
+const GameInfo = styled.div`
+  margin-left: 20px;
+`;
 
 type SquareValue = 'X' | 'O' | null;
 
@@ -115,10 +120,10 @@ class Game extends React.Component<{}, {
             handleClickOnSquareWithIndex={(i) => this.handleClickOnSquareWithIndex(i)}
           />
         </div>
-        <div className="game-info">
+        <GameInfo>
           <div>{status}</div>
           <ol>{moves}</ol>
-        </div>
+        </GameInfo>
       </div>
     );
   }
