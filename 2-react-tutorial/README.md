@@ -17,9 +17,9 @@
     * [X] Taking Turns
     * [X] Declaring a Winner
 * [ ] Storing A History
-    * [ ] Showing the Moves
-    * [ ] Keys
-    * [ ] Implementing Time Travel
+    * [X] Showing the Moves
+    * [X] Keys
+    * [X] Implementing Time Travel
     * [ ] Wrapping Up
 
 Final Result: [Tic Tac Toe game](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)
