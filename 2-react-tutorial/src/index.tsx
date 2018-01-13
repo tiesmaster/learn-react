@@ -32,6 +32,14 @@ const GameShell = styled.div`
   flex-direction: row;
 `;
 
+const BoardRow = styled.div`
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+`;
+
 type SquareValue = 'X' | 'O' | null;
 
 interface SquareProps {
@@ -61,21 +69,21 @@ class Board extends React.Component<{
   render() {
     return (
       <div>
-        <div className="board-row">
+        <BoardRow>
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
+        </BoardRow>
+        <BoardRow>
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
+        </BoardRow>
+        <BoardRow>
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
-        </div>
+        </BoardRow>
       </div>
     );
   }
