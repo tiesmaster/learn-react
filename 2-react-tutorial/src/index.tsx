@@ -40,6 +40,10 @@ const BoardRow = styled.div`
   }
 `;
 
+const MoveList = styled.ol`
+  padding-left: 30px;
+`;
+
 type SquareValue = 'X' | 'O' | null;
 
 interface SquareProps {
@@ -154,7 +158,7 @@ class Game extends React.Component<{}, {
         </div>
         <GameInfo>
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <MoveList>{moves}</MoveList>
         </GameInfo>
       </GameShell>
     );
