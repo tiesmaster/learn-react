@@ -4,7 +4,7 @@ _12 Sections_
 
  * [X] Hello World
  * [X] Introducing JSX
- * [ ] Rendering Elements
+ * [X] Rendering Elements
  * [ ] Components and Props
  * [ ] State and Lifecycle
 
