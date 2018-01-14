@@ -4,6 +4,59 @@ import * as ReactDOM from 'react-dom';
 import './index.css';
 import styled from 'styled-components';
 
+import { createStore } from 'redux';
+
+type ActionTypes =
+  | IncrementAction
+  | DecrementAction
+  | OtherAction;
+
+enum TypeKeys {
+  INC = 'INC',
+  DEC = 'DEC',
+  OTHER_ACTION = '__any_other_action_type__'
+}
+
+interface IncrementAction {
+  type: TypeKeys.INC;
+  by: number;
+}
+
+interface DecrementAction {
+  type: TypeKeys.DEC;
+  by: number;
+}
+
+interface OtherAction {
+  type: TypeKeys.OTHER_ACTION;
+}
+
+interface State {
+  counter: number;
+}
+
+function counterReducer(s: State = { counter: 0 }, action: ActionTypes) {
+  switch (action.type) {
+    case TypeKeys.INC:
+      return { counter: s.counter + action.by };
+    case TypeKeys.DEC:
+      return { counter: s.counter - action.by };
+    default:
+      return s;
+  }
+}
+
+let store = createStore(counterReducer);
+
+store.subscribe(() =>
+  // tslint:disable-next-line
+  console.log((store.getState() as any).counter)
+);
+
+store.dispatch({ type: 'INC', by: 1 });
+store.dispatch({ type: 'INC', by: 1 });
+store.dispatch({ type: 'DEC', by: 1 });
+
 const GameInfo = styled.div`
   margin-left: 20px;
 `;
