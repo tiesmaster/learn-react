@@ -2,7 +2,7 @@
 
 _12 Sections_
 
- * [ ] Hello World
+ * [X] Hello World
  * [ ] Introducing JSX
  * [ ] Rendering Elements
  * [ ] Components and Props
