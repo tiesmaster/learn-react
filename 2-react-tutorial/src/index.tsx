@@ -12,23 +12,23 @@ type ActionTypes =
   | OtherAction;
 
 enum TypeKeys {
-  INC = 'INC',
-  DEC = 'DEC',
-  OTHER_ACTION = '__any_other_action_type__'
+  Increment = 'Increment',
+  Decrement = 'Decrement',
+  OtherAction = '__any_other_action_type__'
 }
 
 interface IncrementAction {
-  type: TypeKeys.INC;
+  type: TypeKeys.Increment;
   by: number;
 }
 
 interface DecrementAction {
-  type: TypeKeys.DEC;
+  type: TypeKeys.Decrement;
   by: number;
 }
 
 interface OtherAction {
-  type: TypeKeys.OTHER_ACTION;
+  type: TypeKeys.OtherAction;
 }
 
 interface State {
@@ -37,9 +37,9 @@ interface State {
 
 function counterReducer(s: State = { counter: 0 }, action: ActionTypes) {
   switch (action.type) {
-    case TypeKeys.INC:
+    case TypeKeys.Increment:
       return { counter: s.counter + action.by };
-    case TypeKeys.DEC:
+    case TypeKeys.Decrement:
       return { counter: s.counter - action.by };
     default:
       return s;
@@ -53,9 +53,9 @@ store.subscribe(() =>
   console.log((store.getState() as any).counter)
 );
 
-store.dispatch({ type: 'INC', by: 1 });
-store.dispatch({ type: 'INC', by: 1 });
-store.dispatch({ type: 'DEC', by: 1 });
+store.dispatch({ type: 'Increment', by: 1 });
+store.dispatch({ type: 'Increment', by: 1 });
+store.dispatch({ type: 'Decrement', by: 1 });
 
 const GameInfo = styled.div`
   margin-left: 20px;
