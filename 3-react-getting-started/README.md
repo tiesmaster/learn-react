@@ -1,4 +1,4 @@
-# [React - Get Started](https://reactjs.org/docs/hello-world.html)
+# [React - Get Started](https://reactjs.org/docs/components-and-props.html)
 
 _12 Sections_
 
