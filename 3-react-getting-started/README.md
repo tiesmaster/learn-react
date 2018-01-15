@@ -1,11 +1,11 @@
-# [React - Get Started](https://reactjs.org/docs/components-and-props.html)
+# [React - Get Started](https://reactjs.org/docs/state-and-lifecycle.html)
 
 _12 Sections_
 
  * [X] Hello World
  * [X] Introducing JSX
  * [X] Rendering Elements
- * [ ] Components and Props
+ * [X] Components and Props
  * [ ] State and Lifecycle
 
  * [ ] Handling Events
