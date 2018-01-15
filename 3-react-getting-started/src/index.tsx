@@ -10,22 +10,22 @@ interface User {
   avatarUrl: string;
 }
 
-function Avatar(props: { user: User }) {
+function Avatar(props: User) {
   return (
     <img
       className="Avatar"
-      src={props.user.avatarUrl}
-      alt={props.user.name}
+      src={props.avatarUrl}
+      alt={props.name}
     />
   );
 }
 
-function UserInfo(props: { user: User }) {
+function UserInfo(props: User) {
   return (
     <div className="UserInfo">
-      <Avatar user={props.user} />
+      <Avatar {...props} />
       <div className="UserInfo-name">
-        {props.user.name}
+        {props.name}
       </div>
     </div>
   );
@@ -40,7 +40,7 @@ interface CommentProps {
 function Comment(props: CommentProps) {
   return (
     <div className="Comment">
-      <UserInfo user={props.author} />
+      <UserInfo {...props.author} />
       <div className="Comment-text">
         {props.text}
       </div>
