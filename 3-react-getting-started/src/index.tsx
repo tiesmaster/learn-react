@@ -1,12 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-class Clock extends React.Component<{ date: Date }> {
+interface ClockProps {
+  date: Date;
+}
+
+class Clock extends React.Component<{}, ClockProps> {
+  constructor(props: ClockProps) {
+    super(props);
+    this.state = { date: new Date() };
+  }
   render() {
     return (
       <div>
         <h1>Hello, world!</h1>
-        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -14,7 +22,7 @@ class Clock extends React.Component<{ date: Date }> {
 
 function tick() {
   ReactDOM.render(
-    <Clock date={new Date()} />,
+    <Clock />,
     document.getElementById('root')
   );
 }
