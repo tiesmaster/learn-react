@@ -6,9 +6,24 @@ interface ClockProps {
 }
 
 class Clock extends React.Component<{}, ClockProps> {
+  timerID: number;
   constructor(props: ClockProps) {
     super(props);
     this.state = { date: new Date() };
+  }
+  componentDidMount() {
+    this.timerID = window.setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+  tick() {
+    this.setState({
+      date: new Date()
+    });
   }
   render() {
     return (
@@ -20,12 +35,7 @@ class Clock extends React.Component<{}, ClockProps> {
   }
 }
 
-function tick() {
-  ReactDOM.render(
-    <Clock />,
-    document.getElementById('root')
-  );
-}
-
-tick();
-setInterval(tick, 1000);
+ReactDOM.render(
+  <Clock />,
+  document.getElementById('root')
+);
