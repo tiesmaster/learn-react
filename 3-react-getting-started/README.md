@@ -1,4 +1,4 @@
-# [React - Get Started](https://reactjs.org/docs/state-and-lifecycle.html)
+# [React - Get Started](https://reactjs.org/docs/handling-events.html)
 
 _12 Sections_
 
@@ -6,7 +6,7 @@ _12 Sections_
  * [X] Introducing JSX
  * [X] Rendering Elements
  * [X] Components and Props
- * [ ] State and Lifecycle
+ * [X] State and Lifecycle
 
  * [ ] Handling Events
  * [ ] Conditional Rendering

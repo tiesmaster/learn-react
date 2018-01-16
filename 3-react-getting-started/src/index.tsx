@@ -35,7 +35,17 @@ class Clock extends React.Component<{}, ClockProps> {
   }
 }
 
+function App() {
+  return (
+    <div>
+      <Clock />
+      <Clock />
+      <Clock />
+    </div>
+  );
+}
+
 ReactDOM.render(
-  <Clock />,
+  <App />,
   document.getElementById('root')
 );
