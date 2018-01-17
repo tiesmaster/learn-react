@@ -1,4 +1,4 @@
-# [React - Get Started](https://reactjs.org/docs/handling-events.html)
+# [React - Get Started](https://reactjs.org/docs/conditional-rendering.html)
 
 _12 Sections_
 
@@ -8,7 +8,7 @@ _12 Sections_
  * [X] Components and Props
  * [X] State and Lifecycle
 
- * [ ] Handling Events
+ * [X] Handling Events
  * [ ] Conditional Rendering
  * [ ] Lists and Keys
  * [ ] Forms
