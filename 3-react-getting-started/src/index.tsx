@@ -27,17 +27,12 @@ function GuestGreeting(props: {}) {
 
 function Greeting(props: { isLoggedIn: boolean; children: React.ReactNode }) {
   const isLoggedIn = props.isLoggedIn;
-  if (isLoggedIn) {
-    return (
-      <div>
-        <UserGreeting />
-        {props.children}
-      </div>
-    );
-  }
+  const greetingComponent = isLoggedIn
+    ? <UserGreeting />
+    : <GuestGreeting />;
   return (
     <div>
-      <GuestGreeting />
+      {greetingComponent}
       {props.children}
     </div>
   );
