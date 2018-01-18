@@ -25,12 +25,22 @@ function GuestGreeting(props: {}) {
   return <h1>Please sign up.</h1>;
 }
 
-function Greeting(props: { isLoggedIn: boolean }) {
+function Greeting(props: { isLoggedIn: boolean; children: React.ReactNode }) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
-    return <UserGreeting />;
+    return (
+      <div>
+        <UserGreeting />
+        {props.children}
+      </div>
+    );
   }
-  return <GuestGreeting />;
+  return (
+    <div>
+      <GuestGreeting />
+      {props.children}
+    </div>
+  );
 }
 
 class LoginControl extends React.Component<{}, { isLoggedIn: boolean }> {
