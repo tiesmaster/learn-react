@@ -1,4 +1,4 @@
-# [React - Get Started](https://reactjs.org/docs/conditional-rendering.html)
+# [React - Get Started](https://reactjs.org/docs/lists-and-keys.html)
 
 _12 Sections_
 
@@ -9,7 +9,7 @@ _12 Sections_
  * [X] State and Lifecycle
 
  * [X] Handling Events
- * [ ] Conditional Rendering
+ * [X] Conditional Rendering
  * [ ] Lists and Keys
  * [ ] Forms
  * [ ] Lifting State Up
