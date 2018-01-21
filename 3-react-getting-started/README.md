@@ -1,4 +1,4 @@
-# [React - Get Started](https://reactjs.org/docs/lists-and-keys.html)
+# [React - Get Started](https://reactjs.org/docs/forms.html)
 
 _12 Sections_
 
@@ -10,7 +10,7 @@ _12 Sections_
 
  * [X] Handling Events
  * [X] Conditional Rendering
- * [ ] Lists and Keys
+ * [X] Lists and Keys
  * [ ] Forms
  * [ ] Lifting State Up
 
