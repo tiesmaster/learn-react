@@ -1,42 +1,28 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-function WarningBanner(props: { warn: boolean }) {
-  if (!props.warn) {
-    return null;
-  }
-
+function ListItem(props: { value: number }) {
+  const value = props.value;
   return (
-    <div className="warning">
-      Warning!
-    </div>
+    <li key={value.toString()}>
+      {value}
+    </li>
+  );
+
+}
+
+function NumberList(props: { numbers: number[] }) {
+  const listItems = props.numbers.map((i) =>
+    <ListItem key={i} value={i} />
+  );
+  return (
+    <ul>{listItems}</ul>
   );
 }
 
-class Page extends React.Component<{}, { showWarning: boolean }> {
-  constructor(props: { showWarning: boolean }) {
-    super(props);
-    this.state = { showWarning: true };
-    this.handleToggleClick = this.handleToggleClick.bind(this);
-  }
-  handleToggleClick() {
-    this.setState(prevState => ({
-      showWarning: !prevState.showWarning
-    }));
-  }
-  render() {
-    return (
-      <div>
-        <WarningBanner warn={this.state.showWarning} />
-        <button onClick={this.handleToggleClick}>
-          {this.state.showWarning ? 'Hide' : 'Show'}
-        </button>
-      </div>
-    );
-  }
-}
+const numbers = [1, 2, 3, 4, 5];
 
 ReactDOM.render(
-  <Page />,
+  <NumberList numbers={numbers} />,
   document.getElementById('root')
 );
