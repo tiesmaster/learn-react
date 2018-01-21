@@ -1,22 +1,42 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-function Mailbox(props: { unreadMessages: string[] }) {
-  const unreadMessages = props.unreadMessages;
+function WarningBanner(props: { warn: boolean }) {
+  if (!props.warn) {
+    return null;
+  }
+
   return (
-    <div>
-      <h1>Hello!</h1>
-      {unreadMessages.length > 0 &&
-        <h2>
-          You have {unreadMessages.length} unread messages.
-        </h2>}
+    <div className="warning">
+      Warning!
     </div>
   );
 }
 
-const messages = ['React', 'Re: React', 'Re:Re: React'];
+class Page extends React.Component<{}, { showWarning: boolean }> {
+  constructor(props: { showWarning: boolean }) {
+    super(props);
+    this.state = { showWarning: true };
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+  }
+  handleToggleClick() {
+    this.setState(prevState => ({
+      showWarning: !prevState.showWarning
+    }));
+  }
+  render() {
+    return (
+      <div>
+        <WarningBanner warn={this.state.showWarning} />
+        <button onClick={this.handleToggleClick}>
+          {this.state.showWarning ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(
-  <Mailbox unreadMessages={messages} />,
+  <Page />,
   document.getElementById('root')
 );
