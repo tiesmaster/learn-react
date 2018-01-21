@@ -12,11 +12,11 @@ function ListItem(props: { value: number }) {
 }
 
 function NumberList(props: { numbers: number[] }) {
-  const listItems = props.numbers.map((i) =>
-    <ListItem key={i} value={i} />
-  );
   return (
-    <ul>{listItems}</ul>
+    <ul>
+      {props.numbers.map((i) =>
+        <ListItem key={i} value={i} />)}
+    </ul>
   );
 }
 
