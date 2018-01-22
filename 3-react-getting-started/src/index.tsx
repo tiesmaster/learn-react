@@ -1,41 +1,58 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-class NameForm extends React.Component<{}, { value: string[] }> {
-  fileInput: HTMLInputElement | null;
+class Reservation extends React.Component<{}, { isGoing: boolean, numberOfGuests: number }> {
   constructor(props: {}) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      isGoing: true,
+      numberOfGuests: 2
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
-  handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (this.fileInput != null && this.fileInput.files != null) {
-      alert(
-        `Selected file - ${
-        this.fileInput.files[0].name
-        }`
-      );
-    }
+  handleInputChange(event: React.FormEvent<HTMLInputElement>) {
+    const target = event.currentTarget;
+    // if (target.type === 'checkbox') {
+    //   this.setState({ isGoing: target.checked });
+    // } else {
+    //   this.setState({ numberOfGuests: +target.value });
+    // }
+    const value = target.type === 'checkbox' ? target.checked : +target.value;
+    const name = target.name;
+
+    const partialState = {};
+    partialState[name] = value;
+
+    this.setState(partialState);
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <label>
-          Upload file:
+          Is going:
           <input
-            type="file"
-            ref={input => {
-              this.fileInput = input;
-            }}
+            name="isGoing"
+            type="checkbox"
+            checked={this.state.isGoing}
+            onChange={this.handleInputChange}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <br />
+        <label>
+          Number of guests:
+          <input
+            name="numberOfGuests"
+            type="number"
+            value={this.state.numberOfGuests}
+            onChange={this.handleInputChange}
+          />
+        </label>
       </form>
     );
   }
 }
 
 ReactDOM.render(
-  <NameForm />,
+  <Reservation />,
   document.getElementById('root')
 );
