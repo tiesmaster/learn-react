@@ -4,25 +4,28 @@ import * as ReactDOM from 'react-dom';
 class NameForm extends React.Component<{}, { value: string }> {
   constructor(props: {}) {
     super(props);
-    this.state = {
-      value: 'Please write an essay about your favorite DOM element.'
-    };
+    this.state = { value: 'coconut' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(event: React.FormEvent<HTMLTextAreaElement>) {
+  handleChange(event: React.FormEvent<HTMLSelectElement>) {
     this.setState({ value: event.currentTarget.value });
   }
   handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    alert('An essay was submitted: ' + this.state.value);
+    alert('Your favorite flavor is: ' + this.state.value);
     event.preventDefault();
   }
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Essay:
-          <textarea value={this.state.value} onChange={this.handleChange} />
+          Pick your favorite La Croix flavor:
+          <select value={this.state.value} onChange={this.handleChange}>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
         </label>
         <input type="submit" value="Submit" />
       </form>
