@@ -1,28 +1,34 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-function ListItem(props: { value: number }) {
-  const value = props.value;
-  return (
-    <li key={value.toString()}>
-      {value}
-    </li>
-  );
-
+class NameForm extends React.Component<{}, { value: string }> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(event: React.FormEvent<HTMLInputElement>) {
+    this.setState({ value: event.currentTarget.value });
+  }
+  handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
 }
-
-function NumberList(props: { numbers: number[] }) {
-  return (
-    <ul>
-      {props.numbers.map((i) =>
-        <ListItem key={i} value={i} />)}
-    </ul>
-  );
-}
-
-const numbers = [1, 2, 3, 4, 5];
 
 ReactDOM.render(
-  <NumberList numbers={numbers} />,
+  <NameForm />,
   document.getElementById('root')
 );
