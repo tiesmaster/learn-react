@@ -9,7 +9,7 @@ class NameForm extends React.Component<{}, { value: string }> {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event: React.FormEvent<HTMLInputElement>) {
-    this.setState({ value: event.currentTarget.value });
+    this.setState({ value: event.currentTarget.value.toUpperCase() });
   }
   handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     alert('A name was submitted: ' + this.state.value);
