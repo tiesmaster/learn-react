@@ -1,4 +1,4 @@
-# [React - Get Started](https://reactjs.org/docs/forms.html)
+# [React - Get Started](https://reactjs.org/docs/lifting-state-up.html)
 
 _12 Sections_
 
@@ -11,7 +11,7 @@ _12 Sections_
  * [X] Handling Events
  * [X] Conditional Rendering
  * [X] Lists and Keys
- * [ ] Forms
+ * [X] Forms
  * [ ] Lifting State Up
 
  * [ ] Composition vs Inheritance
