@@ -1,4 +1,4 @@
-# [React - Get Started](https://reactjs.org/docs/lifting-state-up.html)
+# [React - Get Started](https://reactjs.org/docs/composition-vs-inheritance.html)
 
 _12 Sections_
 
@@ -12,7 +12,7 @@ _12 Sections_
  * [X] Conditional Rendering
  * [X] Lists and Keys
  * [X] Forms
- * [ ] Lifting State Up
+ * [X] Lifting State Up
 
  * [ ] Composition vs Inheritance
  * [ ] Thinking In React
