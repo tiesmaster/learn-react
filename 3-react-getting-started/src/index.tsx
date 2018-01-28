@@ -31,14 +31,17 @@ function BoilingVerdict(props: { celcius: number }) {
   return <p>The water would not boil.</p>;
 }
 
-type TemperatureInputProps = {
+type temperatureWithScale = {
   temperature: string;
   scale: 'c' | 'f';
+};
+
+type temperatureInputProps = temperatureWithScale & {
   onTemperatureChange: (newTemperature: string) => void;
 };
 
-class TemperatureInput extends React.Component<TemperatureInputProps> {
-  constructor(props: TemperatureInputProps) {
+class TemperatureInput extends React.Component<temperatureInputProps> {
+  constructor(props: temperatureInputProps) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -61,10 +64,7 @@ class TemperatureInput extends React.Component<TemperatureInputProps> {
   }
 }
 
-class Calculator extends React.Component<{}, {
-  temperature: string;
-  scale: 'c' | 'f';
-}> {
+class Calculator extends React.Component<{}, temperatureWithScale> {
   constructor(props: {}) {
     super(props);
     this.state = { temperature: '', scale: 'c' };
