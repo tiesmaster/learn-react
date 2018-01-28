@@ -6,6 +6,24 @@ const scaleNames = {
   f: 'Fahrenheit'
 };
 
+function toCelsius(farenheit: number) {
+  return (farenheit - 32) * 5 / 9;
+}
+
+function toFahrenheit(celcius: number) {
+  return (celcius * 9 / 5) + 32;
+}
+
+function tryConvert(temperature: string, convert: (input: number) => number) {
+  const input = parseFloat(temperature);
+  if (Number.isNaN(input)) {
+    return '';
+  }
+  const output = convert(input);
+  const rounded = Math.round(output * 1000) / 1000;
+  return rounded.toString();
+}
+
 // function BoilingVerdict(props: { celcius: number }) {
 //   if (props.celcius >= 100) {
 //     return <p>The water would boil.</p>;
