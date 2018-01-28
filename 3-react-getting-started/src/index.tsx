@@ -31,8 +31,10 @@ function tryConvert(temperature: string, convert: (input: number) => number) {
 //   return <p>The water would not boil.</p>;
 // }
 
-class TemperatureInput extends React.Component<{ scale: 'c' | 'f' }, { temperature: string }> {
-  constructor(props: { scale: 'c' | 'f' }) {
+type TemperatureInputProps = { scale: 'c' | 'f' };
+
+class TemperatureInput extends React.Component<TemperatureInputProps, { temperature: string }> {
+  constructor(props: TemperatureInputProps) {
     super(props);
     this.state = { temperature: '' };
     this.handleChange = this.handleChange.bind(this);
