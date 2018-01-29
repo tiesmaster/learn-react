@@ -19,20 +19,17 @@ interface ProductEntity {
   stocked: boolean;
 }
 
-function ProductNameWithStatus(props: { isOnStock: boolean; name: string }) {
-  const isOnStock = props.isOnStock;
-  if (isOnStock) {
-    return <span className="isOnStock">{props.name}</span>;
-  } else {
-    return <span>{props.name}</span>;
-  }
-}
-
-function Product(props: { product: ProductEntity }) {
+function ProductRow(props: { product: ProductEntity }) {
   const product = props.product;
+  const name = product.stocked ?
+    product.name : (
+      <span style={{ color: 'red' }}>
+        {product.name}
+      </span>
+    );
   return (
     <div>
-      <ProductNameWithStatus name={product.name} isOnStock={product.stocked} />
+      {name}
       <span>{product.price}</span>
     </div>
   );
@@ -44,7 +41,7 @@ function ProductTable(props: { products: ProductEntity[] }) {
       <h1>Name Price</h1>
       <ul>
         {props.products.map((product) =>
-          <Product key={product.name} product={product} />
+          <ProductRow key={product.name} product={product} />
         )}
       </ul>
     </div>
