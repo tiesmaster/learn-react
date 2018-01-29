@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import './index.css';
+import { ChangeEvent } from 'react';
 
 const products = [
   { category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' },
@@ -12,6 +13,12 @@ const products = [
   { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }
 ];
 
+interface ProductEntity {
+  name: string;
+  price: string;
+  stocked: boolean;
+}
+
 function ProductNameWithStatus(props: { isOnStock: boolean; name: string }) {
   const isOnStock = props.isOnStock;
   if (isOnStock) {
@@ -21,7 +28,7 @@ function ProductNameWithStatus(props: { isOnStock: boolean; name: string }) {
   }
 }
 
-function Product(props: { product: { name: string; price: string; stocked: boolean } }) {
+function Product(props: { product: ProductEntity }) {
   const product = props.product;
   return (
     <div>
@@ -31,7 +38,7 @@ function Product(props: { product: { name: string; price: string; stocked: boole
   );
 }
 
-function ProductTable(props: { products: { name: string; price: string; stocked: boolean }[] }) {
+function ProductTable(props: { products: ProductEntity[] }) {
   return (
     <div>
       <h1>Name Price</h1>
@@ -44,4 +51,56 @@ function ProductTable(props: { products: { name: string; price: string; stocked:
   );
 }
 
-ReactDOM.render(<ProductTable products={products} />, document.getElementById('root'));
+class App extends React.Component<{ products: ProductEntity[] }, { searchText: string, limitOnlyOnStock: boolean }> {
+  constructor(props: { products: ProductEntity[] }) {
+    super(props);
+    this.handleSearchTextChanged = this.handleSearchTextChanged.bind(this);
+    this.handleLimitOnlyOnStockChanged = this.handleLimitOnlyOnStockChanged.bind(this);
+    this.state = { searchText: '', limitOnlyOnStock: false };
+  }
+  handleSearchTextChanged(e: ChangeEvent<HTMLInputElement>) {
+    const newValue = e.currentTarget.value;
+    this.setState({ searchText: newValue });
+  }
+  handleLimitOnlyOnStockChanged(e: ChangeEvent<HTMLInputElement>) {
+    const newValue = e.currentTarget.checked;
+    this.setState({ limitOnlyOnStock: newValue });
+  }
+  render() {
+    let filteredProducts = this.props.products;
+
+    const limitOnlyOnStock = this.state.limitOnlyOnStock;
+    if (limitOnlyOnStock) {
+      filteredProducts = filteredProducts.filter((product) => product.stocked);
+    }
+
+    const searchText = this.state.searchText.toUpperCase();
+    if (searchText !== '') {
+      filteredProducts = filteredProducts.filter((product) =>
+        product.name.toUpperCase().indexOf(searchText) >= 0);
+    }
+    return (
+      <div>
+        <form>
+
+          <input
+            type="text"
+            placeholder="Search..."
+            value={this.state.searchText}
+            onChange={this.handleSearchTextChanged}
+          />
+
+          <input
+            type="checkbox"
+            checked={this.state.limitOnlyOnStock}
+            onChange={this.handleLimitOnlyOnStockChanged}
+          />
+
+        </form>
+        <ProductTable products={filteredProducts} />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App products={products} />, document.getElementById('root'));
