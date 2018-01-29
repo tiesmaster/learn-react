@@ -3,6 +3,8 @@ import * as ReactDOM from 'react-dom';
 
 import { ChangeEvent } from 'react';
 
+import './index.css';
+
 const products = [
   { category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' },
   { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' },
@@ -27,23 +29,28 @@ function ProductRow(props: { product: ProductEntity }) {
       </span>
     );
   return (
-    <div>
-      {name}
-      <span>{product.price}</span>
-    </div>
+    <tr>
+      <td>{name}</td>
+      <td>{product.price}</td>
+    </tr>
   );
 }
 
 function ProductTable(props: { products: ProductEntity[] }) {
   return (
-    <div>
-      <h1>Name Price</h1>
-      <ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
         {props.products.map((product) =>
           <ProductRow key={product.name} product={product} />
         )}
-      </ul>
-    </div>
+      </tbody>
+    </table>
   );
 }
 
