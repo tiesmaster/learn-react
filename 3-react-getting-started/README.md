@@ -1,4 +1,4 @@
-# [React - Get Started](https://reactjs.org/docs/composition-vs-inheritance.html)
+# [React - Get Started](https://reactjs.org/docs/thinking-in-react.html)
 
 _12 Sections_
 
@@ -14,5 +14,5 @@ _12 Sections_
  * [X] Forms
  * [X] Lifting State Up
 
- * [ ] Composition vs Inheritance
+ * [X] Composition vs Inheritance
  * [ ] Thinking In React
