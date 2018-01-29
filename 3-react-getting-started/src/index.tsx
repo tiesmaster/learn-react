@@ -1,34 +1,36 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-function FancyBorder(props: { color: string; children: React.ReactNode; }) {
+import './index.css';
+
+const products = [
+  { category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' },
+  { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' },
+  { category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball' },
+  { category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch' },
+  { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5' },
+  { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }
+];
+
+function ProductNameWithStatus(props: { isOnStock: boolean; name: string }) {
+  const isOnStock = props.isOnStock;
+  if (isOnStock) {
+    return <span className="isOnStock">{props.name}</span>;
+  } else {
+    return <span>{props.name}</span>;
+  }
+}
+
+function Product(props: { product: { name: string; price: string; stocked: boolean } }) {
+  const product = props.product;
   return (
-    <div className={'FancyBorder FancyBorder-' + props.color}>
-      {props.children}
+    <div>
+      <ProductNameWithStatus name={product.name} isOnStock={product.stocked} />
+      <span>{product.price}</span>
     </div>
   );
 }
 
-function Dialog(props: { title: React.ReactNode; message: React.ReactNode; }) {
-  return (
-    <FancyBorder color="blue">
-      <h1 className="Dialog-title">
-        {props.title}
-      </h1>
-      <p className="Dialog-message">
-        {props.message}
-      </p>
-    </FancyBorder>
-  );
-}
+const firstProduct = products[0];
 
-function WelcomeDialog() {
-  return (
-    <Dialog
-      title="Welcome"
-      message="Thank you for visiting our spacecraft!"
-    />
-  );
-}
-
-ReactDOM.render(<WelcomeDialog />, document.getElementById('root'));
+ReactDOM.render(<Product product={firstProduct} />, document.getElementById('root'));
