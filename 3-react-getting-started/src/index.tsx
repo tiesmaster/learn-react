@@ -31,6 +31,14 @@ function Product(props: { product: { name: string; price: string; stocked: boole
   );
 }
 
-const firstProduct = products[0];
+function ProductTable(props: { products: { name: string; price: string; stocked: boolean }[] }) {
+  return (
+    <ul>
+      {props.products.map((product) =>
+        <Product key={product.name} product={product} />
+      )}
+    </ul>
+  );
+}
 
-ReactDOM.render(<Product product={firstProduct} />, document.getElementById('root'));
+ReactDOM.render(<ProductTable products={products} />, document.getElementById('root'));
