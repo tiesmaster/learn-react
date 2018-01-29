@@ -33,11 +33,14 @@ function Product(props: { product: { name: string; price: string; stocked: boole
 
 function ProductTable(props: { products: { name: string; price: string; stocked: boolean }[] }) {
   return (
-    <ul>
-      {props.products.map((product) =>
-        <Product key={product.name} product={product} />
-      )}
-    </ul>
+    <div>
+      <h1>Name Price</h1>
+      <ul>
+        {props.products.map((product) =>
+          <Product key={product.name} product={product} />
+        )}
+      </ul>
+    </div>
   );
 }
 
