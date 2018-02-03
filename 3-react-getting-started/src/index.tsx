@@ -22,12 +22,13 @@ interface ProductEntity {
 
 function ProductRow(props: { product: ProductEntity }) {
   const product = props.product;
-  const name = product.stocked ?
-    product.name : (
+  const name = product.stocked
+    ? (
       <span style={{ color: 'red' }}>
         {product.name}
       </span>
-    );
+    )
+    : product.name;
   return (
     <tr>
       <td>{name}</td>
@@ -37,6 +38,23 @@ function ProductRow(props: { product: ProductEntity }) {
 }
 
 function ProductTable(props: { products: ProductEntity[] }) {
+  let lastCategory = '';
+  let rows: React.ReactNode[] = [];
+  products.forEach((product) => {
+    if (product.category !== lastCategory) {
+      rows.push((
+        <tr key={product.category}>
+          <th colSpan={2}>
+            {product.category}
+          </th>
+        </tr>
+      ));
+      lastCategory = product.category;
+    }
+    rows.push((
+      <ProductRow key={product.name} product={product} />
+    ));
+  });
   return (
     <table>
       <thead>
