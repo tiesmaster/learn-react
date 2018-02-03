@@ -15,4 +15,4 @@ _12 Sections_
  * [X] Lifting State Up
 
  * [X] Composition vs Inheritance
- * [ ] Thinking In React
+ * [X] Thinking In React
