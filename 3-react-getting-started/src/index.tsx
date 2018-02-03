@@ -16,6 +16,7 @@ const products = [
 
 interface ProductEntity {
   name: string;
+  category: string;
   price: string;
   stocked: boolean;
 }
@@ -40,7 +41,7 @@ function ProductRow(props: { product: ProductEntity }) {
 function ProductTable(props: { products: ProductEntity[] }) {
   let lastCategory = '';
   let rows: React.ReactNode[] = [];
-  products.forEach((product) => {
+  props.products.forEach((product) => {
     if (product.category !== lastCategory) {
       rows.push((
         <tr key={product.category}>
@@ -64,9 +65,7 @@ function ProductTable(props: { products: ProductEntity[] }) {
         </tr>
       </thead>
       <tbody>
-        {props.products.map((product) =>
-          <ProductRow key={product.name} product={product} />
-        )}
+        {rows}
       </tbody>
     </table>
   );
