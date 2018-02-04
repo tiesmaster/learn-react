@@ -6,6 +6,8 @@ import { createStore } from 'redux';
 // TOGGLE_TODO
 import { ADD_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from './actions';
 
+import { App } from './App';
+
 interface TodoItem {
   text: string;
 }
@@ -49,41 +51,8 @@ function todoApp(state: State = initialState, action: Action) {
 
 let store = createStore(todoApp);
 
-let stateHistory: JSX.Element[] = [];
-
-store.subscribe(() => {
-  const historyItem = stateToJsx(store.getState()!);
-  stateHistory.push(historyItem);
-});
+ReactDOM.render(<App store={store} />, document.getElementById('root'));
 
 store.dispatch({ type: 'SET_VISIBILITY_FILTER', filter: VisibilityFilters.SHOW_ACTIVE });
 store.dispatch({ type: 'ADD_TODO', text: 'Fix store.subscribe stuff' });
-store.dispatch({ type: 'DECREMENT' });
-
-function stateToJsx(state: State) {
-  return (
-    <div>
-      <h3>Visibility filter: {state.visibilityFilter}</h3>
-      <h3>TODOs</h3>
-      <ul>
-        {state.todos.map(ti => (
-          <li>{ti.text}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-const App = () => (
-  <div>
-    {stateHistory.map((item, i) => (
-      <div>
-        <h1>Version {i}</h1>
-        {item}
-        <hr />
-      </div>
-    ))}
-  </div>
-);
-
-ReactDOM.render(<App />, document.getElementById('root'));
+store.dispatch({ type: 'ADD_TODO', text: 'Just testing!!!' });
