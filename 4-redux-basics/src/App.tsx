@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { Store } from 'redux';
 
-interface TodoItem {
-    text: string;
-}
-interface State {
-    visibilityFilter: string;
-    todos: TodoItem[];
-}
+import { State } from './State';
 
 export class App extends React.Component<{ store: Store<State | undefined> }, { stateHistory: State[] }> {
     constructor(props: { store: Store<State> }) {

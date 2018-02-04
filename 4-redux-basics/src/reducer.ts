@@ -1,14 +1,5 @@
-// TOGGLE_TODO
+import { State } from './State';
 import { ADD_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from './actions';
-
-interface TodoItem {
-    text: string;
-}
-
-interface State {
-    visibilityFilter: string;
-    todos: TodoItem[];
-}
 
 const initialState: State = {
     visibilityFilter: VisibilityFilters.SHOW_ALL,
