@@ -13,6 +13,17 @@ interface Action {
     index: number;
 }
 
+const { SHOW_ALL } = VisibilityFilters;
+
+export function visibilityFilter(state: string = SHOW_ALL, action: Action) {
+    switch (action.type) {
+        case SET_VISIBILITY_FILTER:
+            return action.filter;
+        default:
+            return state;
+    }
+}
+
 function todos(state: TodoItem[] = [], action: Action) {
     switch (action.type) {
         case ADD_TODO:
