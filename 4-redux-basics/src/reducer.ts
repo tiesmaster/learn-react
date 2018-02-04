@@ -15,7 +15,7 @@ interface Action {
 
 const { SHOW_ALL } = VisibilityFilters;
 
-export function visibilityFilter(state: string = SHOW_ALL, action: Action) {
+function visibilityFilter(state: string = SHOW_ALL, action: Action) {
     switch (action.type) {
         case SET_VISIBILITY_FILTER:
             return action.filter;
@@ -43,20 +43,8 @@ function todos(state: TodoItem[] = [], action: Action) {
 }
 
 export function todoApp(state: State = initialState, action: Action) {
-    switch (action.type) {
-        case SET_VISIBILITY_FILTER:
-            return { ...state, visibilityFilter: action.filter };
-        case ADD_TODO:
-            return {
-                ...state,
-                todos: todos(state.todos, action)
-            };
-        case TOGGLE_TODO:
-            return {
-                ...state,
-                todos: todos(state.todos, action)
-            };
-        default:
-            return state;
-    }
+    return {
+        visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+        todos: todos(state.todos, action)
+    };
 }
