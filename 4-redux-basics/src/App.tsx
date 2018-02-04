@@ -3,8 +3,8 @@ import { Store } from 'redux';
 
 import { State } from './State';
 
-export class App extends React.Component<{ store: Store<State | undefined> }, { stateHistory: State[] }> {
-    constructor(props: { store: Store<State> }) {
+export class App extends React.Component<{ store: Store<{}> }, { stateHistory: State[] }> {
+    constructor(props: { store: Store<{}> }) {
         super(props);
         this.state = {
             stateHistory: []
@@ -13,7 +13,7 @@ export class App extends React.Component<{ store: Store<State | undefined> }, { 
         const store = this.props.store;
         store.subscribe(() => {
             this.setState((prevState => {
-                return { stateHistory: [...prevState.stateHistory, store.getState()!] };
+                return { stateHistory: [...prevState.stateHistory, (store.getState() as State)] };
             }));
         });
     }
