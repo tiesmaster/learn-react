@@ -1,8 +1,8 @@
 # [Redux - Basics](https://redux.js.org/docs/basics/)
 
  * [X] Actions
- * [ ] Reducers
- * [ ] Store
+ * [X] Reducers
+ * [X] Store
  * [ ] Data Flow
  * [ ] Usage with React
  * [ ] Example: Todo List
