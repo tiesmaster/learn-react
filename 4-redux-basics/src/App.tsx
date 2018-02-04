@@ -37,7 +37,7 @@ export class App extends React.Component<{ store: Store<State | undefined> }, { 
                 <h3>TODOs</h3>
                 <ul>
                     {state.todos.map(ti => (
-                        <li>{ti.text}</li>
+                        <li>{ti.text} (COMPLETED: {ti.completed ? 'TRUE' : 'FALSE'})</li>
                     ))}
                 </ul>
             </div>
