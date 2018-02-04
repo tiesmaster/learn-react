@@ -49,10 +49,12 @@ function todoApp(state: State = initialState, action: Action) {
 
 let store = createStore(todoApp);
 
-store.subscribe(() =>
-  // tslint:disable-next-line:no-console
-  console.log(store.getState())
-);
+let stateHistory: JSX.Element[] = [];
+
+store.subscribe(() => {
+  const historyItem = stateToJsx(store.getState()!);
+  stateHistory.push(historyItem);
+});
 
 store.dispatch({ type: 'SET_VISIBILITY_FILTER', filter: VisibilityFilters.SHOW_ACTIVE });
 store.dispatch({ type: 'ADD_TODO', text: 'Fix store.subscribe stuff' });
@@ -61,7 +63,8 @@ store.dispatch({ type: 'DECREMENT' });
 function stateToJsx(state: State) {
   return (
     <div>
-      <h3>{state.visibilityFilter}</h3>
+      <h3>Visibility filter: {state.visibilityFilter}</h3>
+      <h3>TODOs</h3>
       <ul>
         {state.todos.map(ti => (
           <li>{ti.text}</li>
@@ -69,12 +72,17 @@ function stateToJsx(state: State) {
       </ul>
     </div>
   );
-
 }
 
 const App = () => (
   <div>
-    {stateToJsx(store.getState()!)}
+    {stateHistory.map((item, i) => (
+      <div>
+        <h1>Version {i}</h1>
+        {item}
+        <hr />
+      </div>
+    ))}
   </div>
 );
 
