@@ -58,15 +58,23 @@ store.dispatch({ type: 'SET_VISIBILITY_FILTER', filter: VisibilityFilters.SHOW_A
 store.dispatch({ type: 'ADD_TODO', text: 'Fix store.subscribe stuff' });
 store.dispatch({ type: 'DECREMENT' });
 
+function stateToJsx(state: State) {
+  return (
+    <div>
+      <h3>{state.visibilityFilter}</h3>
+      <ul>
+        {state.todos.map(ti => (
+          <li>{ti.text}</li>
+        ))}
+      </ul>
+    </div>
+  );
+
+}
+
 const App = () => (
   <div>
-    <h3>{store.getState()!.visibilityFilter}</h3>
-    <ul>
-      {store.getState()!.todos.map(ti => (
-        <li>{ti.text}</li>
-      ))}
-    </ul>
-
+    {stateToJsx(store.getState()!)}
   </div>
 );
 
