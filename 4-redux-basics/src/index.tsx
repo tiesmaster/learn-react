@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-import { VisibilityFilters } from './actions';
+import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from './actions';
 
 interface TodoItem {
 }
@@ -15,8 +15,15 @@ const initialState: State = {
   todos: []
 };
 
-function todoApp(state: State = initialState, action: null) {
-  return state;
+function todoApp(state: State = initialState, action: { type: string, filter: string }) {
+  switch (action.type) {
+    case SET_VISIBILITY_FILTER:
+      return Object.assign({}, state, {
+        visibilityFilter: action.filter
+      });
+    default:
+      return state;
+  }
 }
 
 function counter(state: number = 0, action: { type: string; }) {
