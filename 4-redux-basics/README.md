@@ -1,6 +1,6 @@
 # [Redux - Basics](https://redux.js.org/docs/basics/)
 
- * [ ] Actions
+ * [X] Actions
  * [ ] Reducers
  * [ ] Store
  * [ ] Data Flow
