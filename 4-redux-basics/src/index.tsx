@@ -1,5 +1,20 @@
 import { createStore } from 'redux';
 
+import { VisibilityFilters } from './actions';
+
+const initialState = {
+  visibilityFilter: VisibilityFilters.SHOW_ALL,
+  todos: []
+};
+
+function todoApp(state: undefined, action: null) {
+  if (typeof state === 'undefined') {
+    return initialState;
+  }
+
+  return state;
+}
+
 function counter(state: number = 0, action: { type: string; }) {
   switch (action.type) {
     case 'INCREMENT':
