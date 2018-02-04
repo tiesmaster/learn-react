@@ -2,16 +2,20 @@ import { createStore } from 'redux';
 
 import { VisibilityFilters } from './actions';
 
-const initialState = {
+interface TodoItem {
+}
+
+interface State {
+  visibilityFilter: string;
+  todos: TodoItem[];
+}
+
+const initialState: State = {
   visibilityFilter: VisibilityFilters.SHOW_ALL,
   todos: []
 };
 
-function todoApp(state: undefined, action: null) {
-  if (typeof state === 'undefined') {
-    return initialState;
-  }
-
+function todoApp(state: State = initialState, action: null) {
   return state;
 }
 
