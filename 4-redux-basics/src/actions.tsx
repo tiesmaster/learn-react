@@ -16,6 +16,6 @@ export function toggleTodo(index: number) {
     return { type: TOGGLE_TODO, index };
 }
 
-export function setVisibilityFilter(filter: 'SHOW_ALL' | 'SHOW_COMPLETED' | 'SHOW_ACTIVE') {
+export function setVisibilityFilter(filter: string) {
     return { type: SET_VISIBILITY_FILTER, filter };
 }
