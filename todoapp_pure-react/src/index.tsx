@@ -42,11 +42,46 @@ const TodoList = (props: { todos: TodoItem[], toggleTodoItem: (todoIndex: number
     </ul>
   );
 
+interface TodoInputProps {
+  addTodoItem: (newTodoItem: TodoItem) => void;
+}
+
+class TodoInput extends React.Component<TodoInputProps, { userInput: string }> {
+  constructor(props: { addTodoItem: (newTodoItem: TodoItem) => void }) {
+    super(props);
+    this.state = { userInput: '' };
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleUserInputChange = this.handleUserInputChange.bind(this);
+  }
+  handleFormSubmit(e: React.ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (this.state.userInput !== '') {
+      this.props.addTodoItem({ taskTitle: this.state.userInput, isCompleted: false });
+      this.setState({ userInput: '' });
+    }
+  }
+  handleUserInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({ userInput: e.currentTarget.value });
+  }
+  render() {
+    return (
+      <form onSubmit={this.handleFormSubmit}>
+        <input onChange={this.handleUserInputChange} value={this.state.userInput} />
+        <button>Add TODO item</button>
+      </form>
+    );
+  }
+}
+
 class TodoApp extends React.Component<{ initialTodos: TodoItem[] }, { todos: Immutable.List<TodoItem> }> {
   constructor(props: { initialTodos: TodoItem[] }) {
     super(props);
     this.state = { todos: Immutable.List(props.initialTodos) };
+    this.handleAddTodoItem = this.handleAddTodoItem.bind(this);
     this.handleToggleTodo = this.handleToggleTodo.bind(this);
+  }
+  handleAddTodoItem(newTodoItem: TodoItem) {
+    this.setState({ todos: this.state.todos.push(newTodoItem) });
   }
   handleToggleTodo(todoIndex: number) {
     const todos = this.state.todos;
@@ -56,7 +91,10 @@ class TodoApp extends React.Component<{ initialTodos: TodoItem[] }, { todos: Imm
   }
   render() {
     return (
-      <TodoList todos={this.state.todos.toArray()} toggleTodoItem={this.handleToggleTodo} />
+      <div>
+        <TodoInput addTodoItem={this.handleAddTodoItem} />
+        <TodoList todos={this.state.todos.toArray()} toggleTodoItem={this.handleToggleTodo} />
+      </div>
     );
   }
 }
