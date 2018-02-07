@@ -73,10 +73,10 @@ class TodoInput extends React.Component<TodoInputProps, { userInput: string }> {
   }
 }
 
-class TodoApp extends React.Component<{ initialTodos: TodoItem[] }, { todos: Immutable.List<TodoItem> }> {
-  constructor(props: { initialTodos: TodoItem[] }) {
+class TodoApp extends React.Component<{}, { todos: Immutable.List<TodoItem> }> {
+  constructor(props: {}) {
     super(props);
-    this.state = { todos: Immutable.List(props.initialTodos) };
+    this.state = { todos: Immutable.List() };
     this.handleAddTodoItem = this.handleAddTodoItem.bind(this);
     this.handleToggleTodo = this.handleToggleTodo.bind(this);
   }
@@ -99,18 +99,7 @@ class TodoApp extends React.Component<{ initialTodos: TodoItem[] }, { todos: Imm
   }
 }
 
-const sampleTodoItems = [
-  {
-    taskTitle: 'Finish this excercise',
-    isCompleted: false
-  },
-  {
-    taskTitle: 'Check if you need the big lambda here, and there',
-    isCompleted: true
-  }
-];
-
 ReactDOM.render(
-  <TodoApp initialTodos={sampleTodoItems} />,
+  <TodoApp />,
   document.getElementById('root') as HTMLElement
 );
