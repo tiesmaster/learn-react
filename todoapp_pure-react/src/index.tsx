@@ -39,13 +39,24 @@ const TodoList = (props: { todos: TodoItem[], toggleTodoItem: (todoIndex: number
     </ul>
   );
 
-// class TodoApp extends React.Component<{}, {}> {
-//   render() {
-//     return (
-//       <div />
-//     );
-//   }
-// }
+class TodoApp extends React.Component<{ initialTodos: TodoItem[] }, { todos: TodoItem[] }> {
+  constructor(props: { initialTodos: TodoItem[] }) {
+    super(props);
+    this.state = { todos: props.initialTodos };
+    this.handleToggleTodo = this.handleToggleTodo.bind(this);
+  }
+  handleToggleTodo(todoIndex: number) {
+    this.setState({
+      todos: this.state.todos.map((todo, index) =>
+        index === todoIndex ? { ...todo, isCompleted: !todo.isCompleted } : todo)
+    });
+  }
+  render() {
+    return (
+      <TodoList todos={this.state.todos} toggleTodoItem={this.handleToggleTodo} />
+    );
+  }
+}
 
 const sampleTodoItems = [
   {
@@ -58,18 +69,7 @@ const sampleTodoItems = [
   }
 ];
 
-let render: () => void;
-
-const toggleTodo = (i: number) => {
-  const sampleTodoItem = sampleTodoItems[i];
-  sampleTodoItem.isCompleted = !sampleTodoItem.isCompleted;
-  render();
-};
-
-render = () =>
-  ReactDOM.render(
-    <TodoList todos={sampleTodoItems} toggleTodoItem={toggleTodo} />,
-    document.getElementById('root') as HTMLElement
-  );
-
-render();
+ReactDOM.render(
+  <TodoApp initialTodos={sampleTodoItems} />,
+  document.getElementById('root') as HTMLElement
+);
