@@ -15,7 +15,15 @@ const TodoElement = (props: { todo: TodoItem, toggleTodo: () => void }) =>
         checked={props.todo.isCompleted}
         onChange={() => props.toggleTodo()}
       />
-      <span>{props.todo.taskTitle}</span>
+      <span
+        style={
+          {
+            textDecoration: props.todo.isCompleted ? 'line-through' : 'none'
+          }
+        }
+      >
+        {props.todo.taskTitle}
+      </span>
     </div>
   );
 
