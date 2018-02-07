@@ -27,6 +27,18 @@ const TodoElement = (props: { todo: TodoItem, toggleTodo: () => void }) =>
     </div>
   );
 
+const TodoList = (props: { todos: TodoItem[], toggleTodoItem: (todoIndex: number) => void }) =>
+  (
+    <ul>
+      {props.todos.map((todoItem, index) =>
+        <TodoElement
+          key={index}
+          todo={todoItem}
+          toggleTodo={() => props.toggleTodoItem(index)}
+        />)}
+    </ul>
+  );
+
 // class TodoApp extends React.Component<{}, {}> {
 //   render() {
 //     return (
@@ -35,21 +47,24 @@ const TodoElement = (props: { todo: TodoItem, toggleTodo: () => void }) =>
 //   }
 // }
 
-const sampleTodoItem = {
-  taskTitle: 'Finish this excercise',
-  isCompleted: false
-};
+const sampleTodoItems = [
+  {
+    taskTitle: 'Finish this excercise',
+    isCompleted: false
+  }
+];
 
 let render: () => void;
 
-const toggleTodo = () => {
+const toggleTodo = (i: number) => {
+  const sampleTodoItem = sampleTodoItems[i];
   sampleTodoItem.isCompleted = !sampleTodoItem.isCompleted;
   render();
 };
 
 render = () =>
   ReactDOM.render(
-    <TodoElement todo={sampleTodoItem} toggleTodo={() => toggleTodo()} />,
+    <TodoList todos={sampleTodoItems} toggleTodoItem={(i) => toggleTodo(i)} />,
     document.getElementById('root') as HTMLElement
   );
 
