@@ -9,11 +9,11 @@ interface TodoItem {
 
 const TodoElement = (props: { todo: TodoItem, toggleTodo: () => void }) =>
   (
-    <div>
+    <li>
       <input
         type="checkbox"
         checked={props.todo.isCompleted}
-        onChange={() => props.toggleTodo()}
+        onChange={props.toggleTodo}
       />
       <span
         style={
@@ -24,7 +24,7 @@ const TodoElement = (props: { todo: TodoItem, toggleTodo: () => void }) =>
       >
         {props.todo.taskTitle}
       </span>
-    </div>
+    </li>
   );
 
 const TodoList = (props: { todos: TodoItem[], toggleTodoItem: (todoIndex: number) => void }) =>
@@ -51,6 +51,10 @@ const sampleTodoItems = [
   {
     taskTitle: 'Finish this excercise',
     isCompleted: false
+  },
+  {
+    taskTitle: 'Check if you need the big lambda here, and there',
+    isCompleted: true
   }
 ];
 
@@ -64,7 +68,7 @@ const toggleTodo = (i: number) => {
 
 render = () =>
   ReactDOM.render(
-    <TodoList todos={sampleTodoItems} toggleTodoItem={(i) => toggleTodo(i)} />,
+    <TodoList todos={sampleTodoItems} toggleTodoItem={toggleTodo} />,
     document.getElementById('root') as HTMLElement
   );
 
