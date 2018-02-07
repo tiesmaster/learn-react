@@ -7,10 +7,14 @@ interface TodoItem {
   isCompleted: boolean;
 }
 
-const TodoElement = (props: { todo: TodoItem }) =>
+const TodoElement = (props: { todo: TodoItem, toggleTodo: () => void }) =>
   (
     <div>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={props.todo.isCompleted}
+        onChange={() => props.toggleTodo()}
+      />
       <span>{props.todo.taskTitle}</span>
     </div>
   );
@@ -28,7 +32,17 @@ const sampleTodoItem = {
   isCompleted: false
 };
 
-ReactDOM.render(
-  <TodoElement todo={sampleTodoItem} />,
-  document.getElementById('root') as HTMLElement
-);
+let render: () => void;
+
+const toggleTodo = () => {
+  sampleTodoItem.isCompleted = !sampleTodoItem.isCompleted;
+  render();
+};
+
+render = () =>
+  ReactDOM.render(
+    <TodoElement todo={sampleTodoItem} toggleTodo={() => toggleTodo()} />,
+    document.getElementById('root') as HTMLElement
+  );
+
+render();
