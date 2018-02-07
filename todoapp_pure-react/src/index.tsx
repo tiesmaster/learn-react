@@ -1,5 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
+import * as Immutable from 'immutable';
+
 import './index.css';
 
 interface TodoItem {
@@ -39,21 +42,21 @@ const TodoList = (props: { todos: TodoItem[], toggleTodoItem: (todoIndex: number
     </ul>
   );
 
-class TodoApp extends React.Component<{ initialTodos: TodoItem[] }, { todos: TodoItem[] }> {
+class TodoApp extends React.Component<{ initialTodos: TodoItem[] }, { todos: Immutable.List<TodoItem> }> {
   constructor(props: { initialTodos: TodoItem[] }) {
     super(props);
-    this.state = { todos: props.initialTodos };
+    this.state = { todos: Immutable.List(props.initialTodos) };
     this.handleToggleTodo = this.handleToggleTodo.bind(this);
   }
   handleToggleTodo(todoIndex: number) {
-    this.setState({
-      todos: this.state.todos.map((todo, index) =>
-        index === todoIndex ? { ...todo, isCompleted: !todo.isCompleted } : todo)
-    });
+    const todos = this.state.todos;
+    const todo = todos.get(todoIndex);
+
+    this.setState({ todos: todos.set(todoIndex, { ...todo, isCompleted: !todo.isCompleted }) });
   }
   render() {
     return (
-      <TodoList todos={this.state.todos} toggleTodoItem={this.handleToggleTodo} />
+      <TodoList todos={this.state.todos.toArray()} toggleTodoItem={this.handleToggleTodo} />
     );
   }
 }
