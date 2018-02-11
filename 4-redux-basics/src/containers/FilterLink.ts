@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import { setVisibilityFilter } from '../actions';
 import Link from '../components/Link';
-import State from '../State';
+import State, { VisibilityFilter } from '../State';
 
-type FilterLinkProps = { filter: string };
+type FilterLinkProps = { filter: VisibilityFilter };
 
 const mapStateToProps = (state: State, ownProps: FilterLinkProps) => {
     return {

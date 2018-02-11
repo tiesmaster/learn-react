@@ -1,30 +1,25 @@
-import { Action, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
-import { TodoItem } from './State';
-import { ADD_TODO, SET_VISIBILITY_FILTER, VisibilityFilters, TOGGLE_TODO } from './actions';
+import { TodoItem, VisibilityFilter } from './State';
+import { TypeKeys, AddTodoAction, ToggleTodoAction, SetVisibilityFilterAction } from './actions';
 
-const { SHOW_ALL } = VisibilityFilters;
-
-type VisibilityFilterAction = Action & { filter: string };
-
-function visibilityFilter(state: string = SHOW_ALL, action: VisibilityFilterAction) {
+function visibilityFilter(state: VisibilityFilter = 'SHOW_ALL', action: SetVisibilityFilterAction): VisibilityFilter {
     switch (action.type) {
-        case SET_VISIBILITY_FILTER:
+        case TypeKeys.SET_VISIBILITY_FILTER:
             return action.filter;
         default:
             return state;
     }
 }
-type TodoAction = Action & { text: string, index: number };
 
-function todos(state: TodoItem[] = [], action: TodoAction) {
+function todos(state: TodoItem[] = [], action: AddTodoAction | ToggleTodoAction): TodoItem[] {
     switch (action.type) {
-        case ADD_TODO:
+        case TypeKeys.ADD_TODO:
             return [...state, {
                 text: action.text,
                 completed: false
             }];
-        case TOGGLE_TODO:
+        case TypeKeys.TOGGLE_TODO:
             return state.map((todo, index) =>
                 index === action.index
                     ? { ...todo, completed: !todo.completed }
