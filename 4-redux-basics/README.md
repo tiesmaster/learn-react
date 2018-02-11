@@ -3,6 +3,6 @@
  * [X] Actions
  * [X] Reducers
  * [X] Store
- * [ ] Data Flow
- * [ ] Usage with React
- * [ ] Example: Todo List
+ * [X] Data Flow
+ * [X] Usage with React
+ * [X] Example: Todo List
