@@ -73,7 +73,7 @@ class TodoInput extends React.Component<TodoInputProps, { userInput: string }> {
   }
 }
 
-class TodoApp extends React.Component<{}, { todos: Immutable.List<TodoItem> }> {
+class TodoApp extends React.Component<{}, { todos: Immutable.List<Readonly<TodoItem>> }> {
   constructor(props: {}) {
     super(props);
     this.state = { todos: Immutable.List() };
