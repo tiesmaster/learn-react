@@ -3,7 +3,7 @@ export interface TodoItem {
     completed: boolean;
 }
 
-export interface State {
+export default interface State {
     visibilityFilter: string;
     todos: TodoItem[];
 }
