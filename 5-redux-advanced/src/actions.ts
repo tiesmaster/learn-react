@@ -1,4 +1,9 @@
+import { Dispatch } from 'redux';
+
 import { Post } from './types';
+import State from './state';
+
+import { ThunkAction } from 'redux-thunk';
 
 export enum TypeKeys {
     SELECT_SUBREDDIT = 'SELECT_SUBREDDIT',
@@ -61,5 +66,19 @@ export function receivePosts(subreddit: string, json: any): ReceivePostsAction {
         // tslint:disable-next-line:no-any
         posts: json.data.children.map((child: any) => child.data),
         receivedAt: Date.now()
+    };
+}
+
+export function fetchPosts(subreddit: string): ThunkAction<Promise<ReceivePostsAction>, State, void> {
+    return function (dispatch: Dispatch<State>) {
+        dispatch(requestPosts(subreddit));
+        return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+            .then(
+                response => response.json(),
+                // tslint:disable-next-line:no-console
+                error => console.log('An error occured.', error)
+            )
+            .then(json =>
+                dispatch(receivePosts(subreddit, json)));
     };
 }
