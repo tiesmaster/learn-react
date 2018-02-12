@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import State from '../State';
+import State from '../state';
 import { addTodo } from '../actions';
 
 const AddTodoComponent = ({ dispatch }: { dispatch: Dispatch<State> }) => {

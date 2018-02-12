@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { TodoItem, VisibilityFilter } from './State';
+import { TodoItem, VisibilityFilter } from './types';
 import { TypeKeys, AddTodoAction, ToggleTodoAction, SetVisibilityFilterAction } from './actions';
 
 function visibilityFilter(state: VisibilityFilter = 'SHOW_ALL', action: SetVisibilityFilterAction): VisibilityFilter {

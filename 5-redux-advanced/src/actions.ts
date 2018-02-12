@@ -1,4 +1,4 @@
-import { VisibilityFilter } from './State';
+import { VisibilityFilter } from './types';
 
 export enum TypeKeys {
     ADD_TODO = 'ADD_TODO',

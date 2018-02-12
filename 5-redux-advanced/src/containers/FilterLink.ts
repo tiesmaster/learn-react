@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { setVisibilityFilter } from '../actions';
 import Link from '../components/Link';
-import State, { VisibilityFilter } from '../State';
+import State from '../state';
+import { VisibilityFilter } from '../types';
 
 type FilterLinkProps = { filter: VisibilityFilter };
 

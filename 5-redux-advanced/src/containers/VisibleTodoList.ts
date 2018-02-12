@@ -1,7 +1,8 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import State, { TodoItem } from '../State';
+import State from '../state';
+import { TodoItem } from '../types';
 import { toggleTodo } from '../actions';
 import TodoList from '../components/TodoList';
 
