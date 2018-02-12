@@ -56,10 +56,11 @@ function postsBySubreddit(state: State | {} = {}, action: ActionTypes) {
         case TypeKeys.INVALIDATE_SUBREDDIT:
         case TypeKeys.RECEIVE_POSTS:
         case TypeKeys.REQUEST_POSTS:
-            return {
+            const a = {
                 ...state,
                 [action.subreddit]: posts(state[action.subreddit], action)
             };
+            return a;
         default:
             return state;
     }
