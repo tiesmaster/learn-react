@@ -8,7 +8,6 @@ import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 
 import App from './App';
-// import * as Reducer from './reducer';
 
 import { selectSubreddit, fetchPosts } from './actions';
 import rootReducer from './reducer';
