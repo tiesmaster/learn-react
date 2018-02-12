@@ -30,28 +30,15 @@ function posts(
 ): SubredditState {
     switch (action.type) {
         case TypeKeys.INVALIDATE_SUBREDDIT:
-            const a = Object.assign({}, state, {
-                didInvalidate: true
-            });
             const b = { ...state, didInvalidate: true };
             return b;
         case TypeKeys.REQUEST_POSTS:
-            const c = Object.assign({}, state, {
-                isFetching: true,
-                didInvalidate: false
-            });
             return {
                 ...state,
                 isFetching: true,
                 didInvalidate: false
             };
         case TypeKeys.RECEIVE_POSTS:
-            const d = Object.assign({}, state, {
-                isFetching: false,
-                didInvalidate: false,
-                items: action.posts,
-                lastUpdated: action.receivedAt
-            });
             return {
                 ...state,
                 isFetching: false,
@@ -69,9 +56,6 @@ function postsBySubreddit(state: State | {} = {}, action: ActionTypes) {
         case TypeKeys.INVALIDATE_SUBREDDIT:
         case TypeKeys.RECEIVE_POSTS:
         case TypeKeys.REQUEST_POSTS:
-            const a = Object.assign({}, state, {
-                [action.subreddit]: posts(state[action.subreddit], action)
-            });
             return {
                 ...state,
                 [action.subreddit]: posts(state[action.subreddit], action)

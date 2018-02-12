@@ -40,4 +40,4 @@ export default interface State {
 // };
 
 // tslint:disable-next-line:no-console
-console.log(s);
+// console.log(s);
