@@ -12,6 +12,9 @@
 * [ ] [Redux Advanced](5-redux-advanced/)
 
 ## Next
-
 * [ ] [React Advanced Guides](next-react-advanced-guides/)
 * [ ] [Learn TypeScript](next-learn-typescript/)
+
+# Resources
+
+ * [Redux with TypeScript](https://github.com/piotrwitek/react-redux-typescript-guide#redux)
