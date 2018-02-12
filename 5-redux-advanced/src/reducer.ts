@@ -1,36 +1,71 @@
 import { combineReducers } from 'redux';
 
-import { TodoItem, VisibilityFilter } from './types';
-import { TypeKeys, AddTodoAction, ToggleTodoAction, SetVisibilityFilterAction } from './actions';
+import {
+    TypeKeys,
+    ActionTypes,
+    SelectSubredditAction,
+    InvalidateSubredditAction,
+    RequestPostsAction,
+    ReceivePostsAction
+} from './actions';
+import { SubredditState } from './types';
+import State from './state';
 
-function visibilityFilter(state: VisibilityFilter = 'SHOW_ALL', action: SetVisibilityFilterAction): VisibilityFilter {
+function selectedSubreddit(state: string = 'reactjs', action: SelectSubredditAction): string {
     switch (action.type) {
-        case TypeKeys.SET_VISIBILITY_FILTER:
-            return action.filter;
+        case TypeKeys.SELECT_SUBREDDIT:
+            return action.subreddit;
         default:
             return state;
     }
 }
 
-function todos(state: TodoItem[] = [], action: AddTodoAction | ToggleTodoAction): TodoItem[] {
+function posts(
+    state: SubredditState = {
+        isFetching: false,
+        didInvalidate: false,
+        items: []
+    },
+    action: InvalidateSubredditAction | RequestPostsAction | ReceivePostsAction
+) {
     switch (action.type) {
-        case TypeKeys.ADD_TODO:
-            return [...state, {
-                text: action.text,
-                completed: false
-            }];
-        case TypeKeys.TOGGLE_TODO:
-            return state.map((todo, index) =>
-                index === action.index
-                    ? { ...todo, completed: !todo.completed }
-                    : todo
-            );
+        case TypeKeys.INVALIDATE_SUBREDDIT:
+            return Object.assign({}, state, {
+                didInvalidate: true
+            });
+        case TypeKeys.REQUEST_POSTS:
+            return Object.assign({}, state, {
+                isFetching: true,
+                didInvalidate: false
+            });
+        case TypeKeys.RECEIVE_POSTS:
+            return Object.assign({}, state, {
+                isFetching: false,
+                didInvalidate: false,
+                items: action.posts,
+                lastUpdated: action.receivedAt
+            });
         default:
             return state;
     }
 }
 
-export const todoApp = combineReducers({
-    visibilityFilter,
-    todos
+function postsBySubreddit(state: State | {} = {}, action: ActionTypes) {
+    switch (action.type) {
+        case TypeKeys.INVALIDATE_SUBREDDIT:
+        case TypeKeys.RECEIVE_POSTS:
+        case TypeKeys.REQUEST_POSTS:
+            return Object.assign({}, state, {
+                [action.subreddit]: posts(state[action.subreddit], action)
+            });
+        default:
+            return state;
+    }
+}
+
+const rootReducer = combineReducers({
+    postsBySubreddit,
+    selectedSubreddit
 });
+
+export default rootReducer;

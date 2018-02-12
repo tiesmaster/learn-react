@@ -1,6 +1,11 @@
-export interface TodoItem {
-    text: string;
-    completed: boolean;
+export interface Post {
+    readonly id: number;
+    readonly title: string;
 }
 
-export type VisibilityFilter = 'SHOW_ALL' | 'SHOW_ACTIVE' | 'SHOW_COMPLETED';
+export interface SubredditState {
+    readonly isFetching: boolean;
+    readonly didInvalidate: boolean;
+    readonly lastUpdated?: number;
+    readonly items: Post[];
+}

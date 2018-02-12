@@ -1,25 +1,33 @@
-import { VisibilityFilter } from './types';
+import { Post } from './types';
 
 export enum TypeKeys {
-    ADD_TODO = 'ADD_TODO',
-    TOGGLE_TODO = 'TOGGLE_TODO',
-    SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER',
+    SELECT_SUBREDDIT = 'SELECT_SUBREDDIT',
+    INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT',
+    REQUEST_POSTS = 'REQUEST_POSTS',
+    RECEIVE_POSTS = 'RECEIVE_POSTS',
     OTHER_ACTION = '__any_other_action_type__'
 }
 
-export interface AddTodoAction {
-    type: TypeKeys.ADD_TODO;
-    text: string;
+export interface SelectSubredditAction {
+    type: TypeKeys.SELECT_SUBREDDIT;
+    subreddit: string;
 }
 
-export interface ToggleTodoAction {
-    type: TypeKeys.TOGGLE_TODO;
-    index: number;
+export interface InvalidateSubredditAction {
+    type: TypeKeys.INVALIDATE_SUBREDDIT;
+    subreddit: string;
 }
 
-export interface SetVisibilityFilterAction {
-    type: TypeKeys.SET_VISIBILITY_FILTER;
-    filter: VisibilityFilter;
+export interface RequestPostsAction {
+    type: TypeKeys.REQUEST_POSTS;
+    subreddit: string;
+}
+
+export interface ReceivePostsAction {
+    type: TypeKeys.RECEIVE_POSTS;
+    subreddit: string;
+    posts: Post[];
+    receivedAt: number;
 }
 
 export interface OtherAction {
@@ -27,19 +35,31 @@ export interface OtherAction {
 }
 
 export type ActionTypes =
-    | AddTodoAction
-    | ToggleTodoAction
-    | SetVisibilityFilterAction
+    | SelectSubredditAction
+    | InvalidateSubredditAction
+    | RequestPostsAction
+    | ReceivePostsAction
     | OtherAction;
 
-export function addTodo(text: string): AddTodoAction {
-    return { type: TypeKeys.ADD_TODO, text };
+export function selectSubreddit(subreddit: string): SelectSubredditAction {
+    return { type: TypeKeys.SELECT_SUBREDDIT, subreddit };
 }
 
-export function toggleTodo(index: number): ToggleTodoAction {
-    return { type: TypeKeys.TOGGLE_TODO, index };
+export function invalidateSubreddit(subreddit: string): InvalidateSubredditAction {
+    return { type: TypeKeys.INVALIDATE_SUBREDDIT, subreddit };
 }
 
-export function setVisibilityFilter(filter: VisibilityFilter): SetVisibilityFilterAction {
-    return { type: TypeKeys.SET_VISIBILITY_FILTER, filter };
+export function requestPosts(subreddit: string): RequestPostsAction {
+    return { type: TypeKeys.REQUEST_POSTS, subreddit };
+}
+
+// tslint:disable-next-line:no-any
+export function receivePosts(subreddit: string, json: any): ReceivePostsAction {
+    return {
+        type: TypeKeys.RECEIVE_POSTS,
+        subreddit,
+        // tslint:disable-next-line:no-any
+        posts: json.data.children.map((child: any) => child.data),
+        receivedAt: Date.now()
+    };
 }
