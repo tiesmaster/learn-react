@@ -3,7 +3,7 @@ import { SubredditState } from './types';
 export default interface State {
     readonly selectedSubreddit: string;
     readonly postsBySubreddit: {
-        readonly [n: string]: SubredditState
+        readonly [subreddit: string]: SubredditState
     };
 }
 

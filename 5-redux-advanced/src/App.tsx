@@ -1,15 +1,10 @@
 import * as React from 'react';
 import VisibleSubredditPostList from './containers/VisibleSubredditPostList';
+import Header from './containers/Header';
 
-// const App = () => (
-//     <div>
-//         <AddTodo />
-//         <VisibleTodoList />
-//         <Footer />
-//     </div>
-// );
 const App = () => (
     <div>
+        <Header />
         <VisibleSubredditPostList />
     </div>
 );
