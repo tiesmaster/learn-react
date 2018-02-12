@@ -3,14 +3,24 @@ import * as React from 'react';
 import { Post } from '../types';
 import SubredditPost from './SubredditPost';
 
-type PostListProps = { posts: Post[] };
+export type PostListProps = { isLoading: boolean, posts: Post[] };
 
-const SubredditPostList = ({ posts }: PostListProps) => (
-    <ul>
-        {posts.map((post, index) => (
-            <SubredditPost key={index} {...post} />
-        ))}
-    </ul>
-);
+const SubredditPostList = ({ isLoading, posts }: PostListProps) => {
+    if (isLoading) {
+        return (
+            <div>
+                IS LOADING!!!
+            </div>
+        );
+    } else {
+        return (
+            <ul>
+                {posts.map((post, index) => (
+                    <SubredditPost key={index} {...post} />
+                ))}
+            </ul>
+        );
+    }
+};
 
 export default SubredditPostList;

@@ -1,3 +1,4 @@
+import { PostListProps } from './../components/SubredditPostList';
 import { connect } from 'react-redux';
 
 import State from '../state';
@@ -8,13 +9,18 @@ const getVisiblePosts = (subredditState: SubredditState) => {
     return subredditState.items;
 };
 
+const getLoading = (subredditState: SubredditState) => {
+    return subredditState.isFetching;
+};
+
 const getSelectedSubredditState = (state: State) => {
     return state.postsBySubreddit[state.selectedSubreddit];
 };
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: State): PostListProps => {
     return {
-        posts: getVisiblePosts(getSelectedSubredditState(state))
+        posts: getVisiblePosts(getSelectedSubredditState(state)),
+        isLoading: getLoading(getSelectedSubredditState(state))
     };
 };
 
