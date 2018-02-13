@@ -1,18 +1,15 @@
 import * as React from 'react';
 
-import SubredditHeader from './SubredditHeader';
+import HeaderContainer from '../containers/HeaderContainer';
 
 export type HeadersProps = {
-    headers: {
-        subredditName: string;
-        isSelected: boolean
-    }[];
+    headers: string[];
 };
 
 const Headers = ({ headers }: HeadersProps) => (
     <div>
         {headers.map((header, index) => (
-            <SubredditHeader key={index} {...header} />
+            <HeaderContainer key={index} subreddit={header} />
         ))}
     </div>
 );

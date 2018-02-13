@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type SubredditHeaderProps = {
+export type SubredditHeaderProps = {
     subredditName: string;
     isSelected: boolean;
 };
