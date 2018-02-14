@@ -8,7 +8,8 @@ import { selectSubreddit } from '../actions';
 type HeaderContainerProps = { subreddit: string };
 
 // import { SubredditHeaderProps } from '../components/SubredditHeader';
-// TODO: figure out how to have this one return SubredditHeaderProps
+// TODO: figure out how to explicitly define the return type of this method, and the mapDispatchToProps,
+// so you get type safety on the mapStateToProps/mapDispatchToProps functions
 const mapStateToProps = (state: State, ownProps: HeaderContainerProps) => {
     return {
         subredditName: ownProps.subreddit,
