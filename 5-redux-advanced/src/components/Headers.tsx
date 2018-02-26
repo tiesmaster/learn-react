@@ -7,11 +7,7 @@ export type HeadersProps = {
 };
 
 const Headers = ({ headers }: HeadersProps) => (
-    <div>
-        {headers.map((header, index) => (
-            <HeaderContainer key={index} subreddit={header} />
-        ))}
-    </div>
+    <div>{headers.map((header, index) => <HeaderContainer key={index} subreddit={header} />)}</div>
 );
 
 export default Headers;

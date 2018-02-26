@@ -6,7 +6,9 @@ type PostListProps = {
 };
 
 const SubredditPost = ({ id, title }: PostListProps) => (
-    <li>{id}: {title}</li>
+    <li>
+        {id}: {title}
+    </li>
 );
 
 export default SubredditPost;

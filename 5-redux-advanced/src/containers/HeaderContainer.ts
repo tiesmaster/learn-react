@@ -25,9 +25,6 @@ const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: HeaderContainer
     };
 };
 
-const HeaderContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SubredditHeader);
+const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(SubredditHeader);
 
 export default HeaderContainer;
